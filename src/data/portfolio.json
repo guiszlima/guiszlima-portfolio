@@ -1,0 +1,622 @@
+{
+  "meta": {
+    "schemaVersion": "1.0.0",
+    "updatedAt": "2026-10-18"
+  },
+  "profile": {
+    "name": "Guilherme Spicacci Lima",
+    "monogram": "GL",
+    "role": {
+      "pt": "Desenvolvedor de Software | C#/.NET e Backend",
+      "en": "Software Developer | C#/.NET and Backend"
+    },
+    "tagline": {
+      "pt": "Transformo problemas reais em software que pode evoluir.",
+      "en": "Turning real problems into software that can evolve."
+    },
+    "availability": {
+      "pt": "Aberto a oportunidades em desenvolvimento de software",
+      "en": "Open to software development opportunities"
+    },
+    "location": {
+      "pt": "São Paulo, SP · Brasil",
+      "en": "São Paulo, SP · Brazil"
+    },
+    "about": {
+      "pt": "Desenvolvedor de software com experiência prática em desenvolvimento web, integrações e automação. Atuo com suporte técnico corporativo na TOTVS, investigando incidentes em sistemas Protheus, analisando código e regras de negócio. Também tenho experiência anterior como freelancer, desenvolvendo soluções PHP/Laravel e integrações com WooCommerce. Atualmente, aprofundo meus projetos em C#/.NET, APIs, persistência de dados e aplicações full-stack.",
+      "en": "Software developer with hands-on experience in web development, integrations, and automation. I work in corporate technical support at TOTVS, investigating incidents in Protheus systems and analyzing code and business rules. I also have previous freelance experience building PHP/Laravel solutions and WooCommerce integrations. I currently focus my personal projects on C#/.NET, APIs, data persistence, and full-stack applications."
+    },
+    "email": "gui.spicacci.dev@gmail.com",
+    "links": [
+      {
+        "label": "GitHub",
+        "url": "https://github.com/guiszlima"
+      },
+      {
+        "label": "LinkedIn",
+        "url": "https://www.linkedin.com/in/guilhermesouzalima"
+      },
+      {
+        "label": "Portfólio",
+        "url": "https://portfolio-guiszlima.vercel.app"
+      }
+    ]
+  },
+  "projects": [
+    {
+      "id": "enrollment-manager",
+      "title": "Enrollment Manager",
+      "category": {
+        "pt": "Aplicação full-stack",
+        "en": "Full-stack application"
+      },
+      "status": "completed",
+      "year": "2026",
+      "summary": {
+        "pt": "Sistema acadêmico para administrar estudantes, docentes, cursos e matrículas.",
+        "en": "Academic management system for students, teachers, courses, and enrollments."
+      },
+      "description": {
+        "pt": "Aplicação full-stack composta por API em ASP.NET Core e frontend Angular. Organiza regras de negócio em serviços, usa DTOs para os contratos da API e PostgreSQL para persistência. Inclui autenticação JWT, controle de acesso por perfil, validações de matrícula e relatórios de cursos para impressão ou salvamento em PDF.",
+        "en": "A full-stack application with an ASP.NET Core API and an Angular frontend. Business rules are organized into services, DTOs define API contracts, and PostgreSQL handles persistence. Features include JWT authentication, role-based access control, enrollment validation, and course reports that can be printed or saved as PDFs."
+      },
+      "technologies": [
+        "csharp",
+        "dotnet",
+        "aspnet-core",
+        "entity-framework-core",
+        "postgresql",
+        "angular",
+        "typescript",
+        "tailwind-css",
+        "jwt",
+        "docker",
+        "xunit",
+        "moq"
+      ],
+      "highlights": [
+        {
+          "pt": "Autenticação JWT e autorização por perfis de acesso.",
+          "en": "JWT authentication and role-based authorization."
+        },
+        {
+          "pt": "Regras de matrícula, controle de vagas e validação de compatibilidade entre estudantes, cursos e docentes.",
+          "en": "Enrollment rules, seat management, and compatibility validation across students, courses, and teachers."
+        },
+        {
+          "pt": "Relatórios em PDF e testes automatizados para serviços do backend.",
+          "en": "PDF reports and automated tests for backend services."
+        }
+      ],
+      "repositoryUrl": "https://github.com/guiszlima/EnrollmentManager"
+    },
+    {
+      "id": "jartisan-cli",
+      "title": "Jartisan CLI",
+      "category": {
+        "pt": "Ferramenta para desenvolvedores",
+        "en": "Developer tool"
+      },
+      "status": "completed",
+      "year": "2026",
+      "summary": {
+        "pt": "CLI em C#/.NET para apoiar tarefas de estruturação e manutenção de projetos Java/Maven.",
+        "en": "A C#/.NET CLI for assisting with Java/Maven project setup and maintenance."
+      },
+      "description": {
+        "pt": "Ferramenta de linha de comando voltada a tarefas recorrentes em projetos Java com Maven, incluindo operações relacionadas ao pom.xml, estrutura de diretórios e criação de scaffolding. O projeto explora separação de responsabilidades e organização em camadas, usando .NET e Native AOT.",
+        "en": "A command-line tool for recurring tasks in Java projects using Maven, including pom.xml operations, directory structure management, and project scaffolding. The project explores separation of concerns and layered organization using .NET and Native AOT."
+      },
+      "technologies": [
+        "csharp",
+        "dotnet",
+        "native-aot",
+        "maven",
+        "xml",
+        "clean-architecture"
+      ],
+      "highlights": [
+        {
+          "pt": "Automatiza tarefas relacionadas à estrutura e configuração de projetos Maven.",
+          "en": "Automates tasks related to Maven project structure and configuration."
+        },
+        {
+          "pt": "Explora uma arquitetura em camadas com responsabilidades separadas.",
+          "en": "Explores a layered architecture with separated responsibilities."
+        }
+      ],
+      "repositoryUrl": "https://github.com/guiszlima/jartisan-cli"
+    },
+    {
+      "id": "bora-vender-pdv",
+      "title": "Bora Vender PDV",
+      "category": {
+        "pt": "Sistema comercial",
+        "en": "Commercial software"
+      },
+      "status": "completed",
+      "year": "2024–2025",
+      "summary": {
+        "pt": "Ponto de venda integrado ao WooCommerce, desenvolvido para uso em lojas.",
+        "en": "A point-of-sale system integrated with WooCommerce and built for use in retail stores."
+      },
+      "description": {
+        "pt": "Sistema comercial desenvolvido com PHP/Laravel e MySQL, integrado à REST API do WooCommerce. Foi comercializado e implantado em três lojas. A experiência também envolveu evolução de funcionalidades e resolução de problemas em um ambiente WordPress/WooCommerce.",
+        "en": "Commercial software built with PHP/Laravel and MySQL and integrated with the WooCommerce REST API. It was sold and deployed in three stores. The work also involved feature development and troubleshooting in a WordPress/WooCommerce environment."
+      },
+      "technologies": [
+        "php",
+        "laravel",
+        "mysql",
+        "woocommerce",
+        "wordpress",
+        "rest-api"
+      ],
+      "highlights": [
+        {
+          "pt": "Solução comercializada e implantada em três lojas.",
+          "en": "Commercial solution sold and deployed in three stores."
+        },
+        {
+          "pt": "Integração com a API REST do WooCommerce.",
+          "en": "Integration with the WooCommerce REST API."
+        },
+        {
+          "pt": "Otimização de consulta no ambiente WordPress/WooCommerce, de cerca de 2 s para aproximadamente 100–200 ms.",
+          "en": "Query optimization in the WordPress/WooCommerce environment, from about 2 seconds to approximately 100–200 ms."
+        }
+      ],
+      "repositoryUrl": "https://github.com/guiszlima/BoraVender-PDV"
+    },
+    {
+      "id": "auto-print-installer",
+      "title": "Auto Print Installer",
+      "category": {
+        "pt": "Automação",
+        "en": "Automation"
+      },
+      "status": "completed",
+      "year": "2024",
+      "summary": {
+        "pt": "Automação de etapas operacionais de instalação e configuração de impressoras.",
+        "en": "Automation for operational printer installation and configuration tasks."
+      },
+      "description": {
+        "pt": "Ferramenta criada para automatizar partes do fluxo de instalação de impressoras em ambiente corporativo, reduzindo etapas manuais e padronizando procedimentos de configuração.",
+        "en": "A tool built to automate parts of the printer installation workflow in a corporate environment, reducing manual steps and standardizing configuration procedures."
+      },
+      "technologies": [
+        "python",
+        "powershell",
+        "automation"
+      ],
+      "highlights": [
+        {
+          "pt": "Automatiza tarefas repetitivas do processo de instalação de impressoras.",
+          "en": "Automates repetitive tasks in the printer installation process."
+        },
+        {
+          "pt": "Criado a partir de necessidades operacionais reais.",
+          "en": "Built to address real operational needs."
+        }
+      ],
+      "repositoryUrl": "https://github.com/guiszlima/Auto-Print-Installer"
+    },
+    {
+      "id": "json-generator-for-printers",
+      "title": "JSON Generator for Printers",
+      "category": {
+        "pt": "Utilitário de automação",
+        "en": "Automation utility"
+      },
+      "status": "completed",
+      "year": "2024",
+      "summary": {
+        "pt": "Utilitário para gerar dados JSON usados em fluxos de cadastro e configuração de impressoras.",
+        "en": "Utility for generating JSON data used in printer registration and configuration workflows."
+      },
+      "description": {
+        "pt": "Pequena ferramenta de apoio à preparação de dados estruturados para impressoras e drivers, com foco em padronizar informações de configuração e facilitar o uso dessas informações por outros processos.",
+        "en": "A utility for preparing structured data about printers and drivers, focused on standardizing configuration information and making it easier for other processes to consume."
+      },
+      "technologies": [
+        "python",
+        "json",
+        "automation"
+      ],
+      "highlights": [
+        {
+          "pt": "Geração estruturada de dados JSON para informações relacionadas a impressoras.",
+          "en": "Structured JSON generation for printer-related data."
+        },
+        {
+          "pt": "Apoio à padronização de cadastros e configurações.",
+          "en": "Supports standardized registration and configuration data."
+        }
+      ],
+      "repositoryUrl": "https://github.com/guiszlima/Json-generator-for-printers"
+    },
+    {
+      "id": "omni-theme",
+      "title": "Omni Theme",
+      "category": {
+        "pt": "Tema para IDE",
+        "en": "IDE theme"
+      },
+      "status": "completed",
+      "year": "—",
+      "summary": {
+        "pt": "Tema escuro inspirado no design Omni para IDEs da família JetBrains.",
+        "en": "A dark theme inspired by the Omni design for JetBrains IDEs."
+      },
+      "description": {
+        "pt": "Fork de um projeto de tema visual para IDEs JetBrains, com foco em uma experiência escura e confortável para ambientes como Rider, IntelliJ IDEA, WebStorm e outras IDEs compatíveis.",
+        "en": "A fork of a visual theme project for JetBrains IDEs, focused on a dark and comfortable experience for environments such as Rider, IntelliJ IDEA, WebStorm, and other compatible IDEs."
+      },
+      "technologies": [
+        "java",
+        "gradle",
+        "jetbrains-ide"
+      ],
+      "highlights": [
+        {
+          "pt": "Tema escuro para Rider, IntelliJ IDEA, WebStorm e outras IDEs JetBrains compatíveis.",
+          "en": "Dark theme for Rider, IntelliJ IDEA, WebStorm, and other compatible JetBrains IDEs."
+        },
+        {
+          "pt": "Repositório apresentado como fork do projeto de tema original.",
+          "en": "Repository presented as a fork of the original theme project."
+        }
+      ],
+      "repositoryUrl": "https://github.com/guiszlima/omni-riders"
+    }
+  ],
+  "experience": [
+    {
+      "id": "totvs-support-analyst",
+      "company": "TOTVS",
+      "role": {
+        "pt": "Analista de Suporte Técnico",
+        "en": "Technical Support Analyst"
+      },
+      "period": {
+        "pt": "Out/2025 – atual",
+        "en": "Oct 2025 – Present"
+      },
+      "summary": {
+        "pt": "Atendimento técnico de sistemas Protheus nos módulos Contábil, Ativo Fixo, PCO e módulos de comércio exterior. Investigo e reproduzo incidentes, analiso código ADVPL, consultas SQL Server, configurações e regras de negócio para identificar causas e orientar a resolução.",
+        "en": "Technical support for Protheus systems across Accounting, Fixed Assets, PCO, and foreign-trade modules. I investigate and reproduce incidents, analyze ADVPL code, SQL Server queries, configurations, and business rules to identify causes and guide resolution."
+      },
+      "technologies": [
+        "protheus",
+        "advpl",
+        "sql-server",
+        "sql",
+        "debugging",
+        "business-rules"
+      ]
+    },
+    {
+      "id": "freelance-software-developer",
+      "company": "Projetos Freelance",
+      "role": {
+        "pt": "Desenvolvedor de Software",
+        "en": "Software Developer"
+      },
+      "period": {
+        "pt": "Ago/2024 – Out/2025",
+        "en": "Aug 2024 – Oct 2025"
+      },
+      "summary": {
+        "pt": "Desenvolvimento e manutenção de soluções sob demanda com PHP/Laravel, MySQL, WordPress e WooCommerce. Construí e implantei um sistema de ponto de venda integrado ao WooCommerce, desenvolvi funcionalidades e integrações e resolvi problemas em produção, acompanhando as soluções ao longo do ciclo de entrega.",
+        "en": "Developed and maintained custom solutions with PHP/Laravel, MySQL, WordPress, and WooCommerce. Built and deployed a point-of-sale system integrated with WooCommerce, delivered features and integrations, and troubleshot production issues throughout the delivery lifecycle."
+      },
+      "technologies": [
+        "php",
+        "laravel",
+        "mysql",
+        "wordpress",
+        "woocommerce",
+        "rest-api",
+        "sql"
+      ]
+    },
+    {
+      "id": "sao-paulo-municipal-internship",
+      "company": "Secretaria Municipal de Gestão de São Paulo",
+      "role": {
+        "pt": "Estagiário / Desenvolvedor Web",
+        "en": "Web Development Intern"
+      },
+      "period": {
+        "pt": "Dez/2023 – Ago/2024",
+        "en": "Dec 2023 – Aug 2024"
+      },
+      "summary": {
+        "pt": "Desenvolvi automações com Python e PowerShell para apoiar a instalação de impressoras e a organização de dados de impressoras e drivers. Trabalhei com geração e manipulação de JSON, operações de cadastro e controle de duplicidade para reduzir tarefas operacionais manuais.",
+        "en": "Built Python and PowerShell automations to support printer installation and the organization of printer and driver data. Worked with JSON generation and manipulation, registration workflows, and duplicate control to reduce manual operational tasks."
+      },
+      "technologies": [
+        "python",
+        "powershell",
+        "json",
+        "automation"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "id": "csharp",
+      "name": "C#",
+      "category": {
+        "pt": "Linguagem",
+        "en": "Language"
+      },
+      "level": "proficient"
+    },
+    {
+      "id": "dotnet",
+      "name": ".NET",
+      "category": {
+        "pt": "Backend",
+        "en": "Backend"
+      },
+      "level": "proficient"
+    },
+    {
+      "id": "aspnet-core",
+      "name": "ASP.NET Core",
+      "category": {
+        "pt": "Backend",
+        "en": "Backend"
+      },
+      "level": "proficient"
+    },
+    {
+      "id": "entity-framework-core",
+      "name": "Entity Framework Core",
+      "category": {
+        "pt": "Persistência",
+        "en": "Data access"
+      },
+      "level": "proficient"
+    },
+    {
+      "id": "php",
+      "name": "PHP",
+      "category": {
+        "pt": "Linguagem",
+        "en": "Language"
+      },
+      "level": "core"
+    },
+    {
+      "id": "laravel",
+      "name": "Laravel",
+      "category": {
+        "pt": "Backend",
+        "en": "Backend"
+      },
+      "level": "core"
+    },
+    {
+      "id": "rest-api",
+      "name": "APIs REST",
+      "category": {
+        "pt": "Integração",
+        "en": "Integration"
+      },
+      "level": "proficient"
+    },
+    {
+      "id": "sql",
+      "name": "SQL",
+      "category": {
+        "pt": "Dados",
+        "en": "Data"
+      },
+      "level": "proficient"
+    },
+    {
+      "id": "postgresql",
+      "name": "PostgreSQL",
+      "category": {
+        "pt": "Banco de dados",
+        "en": "Database"
+      },
+      "level": "working"
+    },
+    {
+      "id": "mysql",
+      "name": "MySQL",
+      "category": {
+        "pt": "Banco de dados",
+        "en": "Database"
+      },
+      "level": "proficient"
+    },
+    {
+      "id": "sql-server",
+      "name": "SQL Server",
+      "category": {
+        "pt": "Banco de dados",
+        "en": "Database"
+      },
+      "level": "working"
+    },
+    {
+      "id": "angular",
+      "name": "Angular",
+      "category": {
+        "pt": "Frontend",
+        "en": "Frontend"
+      },
+      "level": "working"
+    },
+    {
+      "id": "typescript",
+      "name": "TypeScript",
+      "category": {
+        "pt": "Linguagem",
+        "en": "Language"
+      },
+      "level": "working"
+    },
+    {
+      "id": "react-nextjs",
+      "name": "React / Next.js",
+      "category": {
+        "pt": "Frontend",
+        "en": "Frontend"
+      },
+      "level": "working"
+    },
+    {
+      "id": "python",
+      "name": "Python",
+      "category": {
+        "pt": "Linguagem",
+        "en": "Language"
+      },
+      "level": "working"
+    },
+    {
+      "id": "powershell",
+      "name": "PowerShell",
+      "category": {
+        "pt": "Automação",
+        "en": "Automation"
+      },
+      "level": "working"
+    },
+    {
+      "id": "docker",
+      "name": "Docker / Docker Compose",
+      "category": {
+        "pt": "Infraestrutura",
+        "en": "Infrastructure"
+      },
+      "level": "working"
+    },
+    {
+      "id": "git-github",
+      "name": "Git / GitHub",
+      "category": {
+        "pt": "Ferramentas",
+        "en": "Tools"
+      },
+      "level": "proficient"
+    },
+    {
+      "id": "clean-architecture",
+      "name": "Clean Architecture / SOLID",
+      "category": {
+        "pt": "Práticas de engenharia",
+        "en": "Engineering practices"
+      },
+      "level": "working"
+    },
+    {
+      "id": "advpl",
+      "name": "ADVPL",
+      "category": {
+        "pt": "Sistemas corporativos",
+        "en": "Enterprise systems"
+      },
+      "level": "working"
+    },
+    {
+      "id": "maven-xml",
+      "name": "Maven / XML",
+      "category": {
+        "pt": "Ferramentas de desenvolvimento",
+        "en": "Developer tooling"
+      },
+      "level": "working"
+    },
+    {
+      "id": "tailwind-css",
+      "name": "Tailwind CSS",
+      "category": { "pt": "Frontend", "en": "Frontend" },
+      "level": "working"
+    },
+    {
+      "id": "jwt",
+      "name": "JWT",
+      "category": { "pt": "Segurança", "en": "Security" },
+      "level": "working"
+    },
+    {
+      "id": "xunit",
+      "name": "xUnit",
+      "category": { "pt": "Testes", "en": "Testing" },
+      "level": "working"
+    },
+    {
+      "id": "moq",
+      "name": "Moq",
+      "category": { "pt": "Testes", "en": "Testing" },
+      "level": "working"
+    },
+    {
+      "id": "native-aot",
+      "name": "Native AOT",
+      "category": { "pt": "Runtime", "en": "Runtime" },
+      "level": "working"
+    },
+    {
+      "id": "maven",
+      "name": "Maven",
+      "category": { "pt": "Ferramentas de desenvolvimento", "en": "Developer tooling" },
+      "level": "working"
+    },
+    {
+      "id": "xml",
+      "name": "XML",
+      "category": { "pt": "Dados", "en": "Data" },
+      "level": "working"
+    },
+    {
+      "id": "woocommerce",
+      "name": "WooCommerce",
+      "category": { "pt": "E-commerce", "en": "E-commerce" },
+      "level": "proficient"
+    },
+    {
+      "id": "wordpress",
+      "name": "WordPress",
+      "category": { "pt": "CMS", "en": "CMS" },
+      "level": "proficient"
+    },
+    {
+      "id": "automation",
+      "name": "Automação", 
+      "category": { "pt": "Automação", "en": "Automation" },
+      "level": "working"
+    },
+    {
+      "id": "json",
+      "name": "JSON",
+      "category": { "pt": "Dados", "en": "Data" },
+      "level": "working"
+    },
+    {
+      "id": "java",
+      "name": "Java",
+      "category": { "pt": "Linguagem", "en": "Language" },
+      "level": "working"
+    },
+    {
+      "id": "gradle",
+      "name": "Gradle",
+      "category": { "pt": "Ferramentas de desenvolvimento", "en": "Developer tooling" },
+      "level": "working"
+    },
+    {
+      "id": "jetbrains-ide",
+      "name": "JetBrains IDEs",
+      "category": { "pt": "Ferramentas", "en": "Tools" },
+      "level": "working"
+    }
+  ]
+}

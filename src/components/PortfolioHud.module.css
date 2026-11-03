@@ -1,0 +1,984 @@
+/* ==========================================================================
+   PORTFOLIO HUD INTERATIVO - STYLESHEET
+   ========================================================================== */
+
+/* ── Container Principal e Grade de Fundo ── */
+/* ── Estilo do Cursor Customizado ── */
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 14px;
+  height: 14px;
+  margin-top: -7px;
+  margin-left: -7px;
+  border-radius: 50%;
+  background: var(--hud-yellow);
+  border: 1px solid var(--hud-bg);
+  box-shadow: 0 0 6px var(--hud-yellow);
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.85;
+  will-change: transform, opacity, box-shadow;
+}
+
+/* ── Grade de Fundo (Pointer events em 'none' para habilitar seleção de texto) ── */
+.grid {
+  position: fixed;
+  z-index: -1;
+  inset: -120px;
+  background-image: 
+    linear-gradient(var(--hud-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hud-line) 1px, transparent 1px);
+  background-size: 80px 80px;
+  opacity: 0.22; 
+  /* 'none' devolve a seleção de texto e comportamento normal do cursor do SO */
+  pointer-events: none; 
+  will-change: transform, background-position, opacity, filter;
+}
+
+/* Se desejar esconder o cursor padrão do sistema na área da aplicação: */
+.hud {
+  min-height: 100vh;
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background: var(--hud-bg);
+  font-family: Arial, Helvetica, sans-serif;
+  -webkit-user-select: none; /* Safari / Chrome antigo */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* IE / Edge antigo */
+  user-select: none;
+  cursor: none; /* Cursor técnico estilo mira que permite selecionar texto normalmente */
+}
+/* ── Header Principal ── */
+.header {
+  height: 72px;
+  border-bottom: 1px solid color-mix(in srgb, var(--hud-line) 70%, transparent);
+  display: flex;
+  align-items: center;
+  padding: 0 28px;
+  gap: 26px;
+  background: color-mix(in srgb, var(--hud-bg) 92%, transparent);
+  position: relative;
+  z-index: 2;
+}
+.localeGroup {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  border: 1px solid var(--hud-line);
+  padding: 3px;
+  background: color-mix(in srgb, var(--hud-bg) 80%, transparent);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.localeIndicator {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 0;
+  background: var(--hud-yellow);
+  box-shadow: 0 0 10px rgba(242, 230, 91, 0.4);
+  border-radius: 1px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.localeBtn {
+  position: relative;
+  z-index: 2;
+  border: 0;
+  background: transparent;
+  color: var(--hud-text-secondary);
+  padding: 5px 12px;
+  font: 700 11px ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: color 0.25s ease;
+}
+
+.localeBtn:hover {
+  color: var(--hud-yellow);
+}
+
+.activeLocale {
+  color: var(--hud-bg) !important;
+  font-weight: 800;
+}
+.brand {
+  font: 700 22px ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: -0.12em;
+  color: var(--hud-yellow);
+}
+
+.brand i {
+  color: var(--hud-magenta);
+  font-style: normal;
+}
+
+.system {
+  font: 11px ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.13em;
+  color: var(--hud-text-secondary);
+}
+
+.system span {
+  margin-left: 12px;
+  color: var(--hud-yellow);
+  font-size: 9px;
+}
+
+.locale {
+  display: flex;
+  margin-left: auto;
+  border: 1px solid var(--hud-line);
+  padding: 3px;
+}
+
+.locale button {
+  border: 0;
+  background: transparent;
+  color: var(--hud-text-secondary);
+  padding: 5px 8px;
+  font: 11px ui-monospace, SFMono-Regular, Menlo, monospace;
+ cursor: none;
+}
+
+.locale .current {
+  background: var(--hud-yellow);
+  color: var(--hud-bg);
+  font-weight: 700;
+}
+
+/* ── Grid Layout Estrutural ── */
+.layout {
+  display: grid;
+  grid-template-columns: 218px minmax(0, 1fr) 285px;
+  min-height: calc(100vh - 110px);
+  width: min(1500px, 100%);
+  margin: auto;
+}
+
+/* ── Navegação Lateral (Módulos) ── */
+.nav {
+  border-right: 1px solid color-mix(in srgb, var(--hud-line) 70%, transparent);
+  padding: 42px 18px;
+}
+
+.nav > p,
+.panelLabel,
+.kicker {
+  margin: 0;
+  color: var(--hud-yellow);
+  font: 10px ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.14em;
+}
+
+.nav button {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 0;
+  border-left: 2px solid transparent;
+  background: transparent;
+  color: var(--hud-text-secondary);
+  padding: 14px 8px;
+  text-align: left;
+ cursor: none;
+  font-size: 14px;
+}
+
+.nav button small {
+  font: 9px ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--hud-line);
+}
+
+.nav button b {
+  margin-left: auto;
+  opacity: 0;
+  font-weight: 400;
+}
+
+.nav button:hover {
+  color: var(--hud-text);
+}
+
+.nav .active {
+  background: var(--hud-panel);
+  border-left-color: var(--hud-yellow);
+  color: var(--hud-yellow);
+}
+
+.nav .active b {
+  opacity: 1;
+}
+
+/* ── Área Principal de Conteúdo ── */
+.content {
+  padding: 58px clamp(30px, 6vw, 94px);
+  min-width: 0;
+}
+
+.kicker {
+  margin-bottom: 22px;
+}
+
+.content h1 {
+  margin: 0;
+  font-size: clamp(48px, 7vw, 94px);
+  line-height: 0.9;
+  letter-spacing: -0.08em;
+}
+
+.content h1 em {
+  font-style: normal;
+  color: var(--hud-yellow);
+}
+
+.role {
+  color: var(--hud-yellow);
+  font-weight: 700;
+  font-size: 16px;
+  margin: 24px 0 8px;
+}
+
+.lead {
+  margin: 0;
+  max-width: 500px;
+  color: var(--hud-text-secondary);
+  font-size: 21px;
+  line-height: 1.4;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 38px;
+}
+
+.primary,
+.secondary {
+  border: 1px solid var(--hud-yellow);
+  background: var(--hud-yellow);
+  color: var(--hud-bg);
+  padding: 13px 17px;
+ cursor: none;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.primary span,
+.email span {
+  margin-left: 24px;
+}
+
+.secondary {
+  background: transparent;
+  color: var(--hud-text);
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  text-decoration: none;
+  transition: color 160ms ease, background 160ms ease, transform 160ms ease;
+}
+
+.secondary:hover,
+.secondary:focus-visible {
+  background: var(--hud-yellow);
+  color: var(--hud-bg);
+}
+
+.secondary:active {
+  transform: translateY(1px);
+}
+
+.secondary span {
+  color: var(--hud-yellow);
+  transition: color 160ms ease;
+}
+
+.secondary:hover span,
+.secondary:focus-visible span {
+  color: var(--hud-bg);
+}
+
+.readout {
+  display: flex;
+  gap: 26px;
+  margin-top: 72px;
+  padding-top: 14px;
+  border-top: 1px solid var(--hud-line);
+  color: var(--hud-text-secondary);
+  font: 10px ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.05em;
+}
+
+.readout span:first-child {
+  color: var(--hud-yellow);
+}
+
+/* ── Painel de Contexto Lateral ── */
+.context {
+  border-left: 1px solid color-mix(in srgb, var(--hud-line) 70%, transparent);
+  background: color-mix(in srgb, var(--hud-panel) 62%, transparent);
+  display: flex;
+  flex-direction: column;
+}
+
+.context > .panelLabel {
+  padding: 20px;
+  border-bottom: 1px solid var(--hud-line);
+}
+
+.contextBody {
+  padding: 28px 21px;
+}
+
+.contextBody h2 {
+  margin: 12px 0;
+  font-size: 25px;
+  letter-spacing: -0.05em;
+}
+
+.contextBody p:not(.signal) {
+  color: var(--hud-text-secondary);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.signal {
+  color: var(--hud-yellow);
+  font: 10px ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.1em;
+}
+
+.location {
+  margin-top: 42px;
+}
+
+.contextFoot {
+  margin-top: auto;
+  padding: 15px 20px;
+  border-top: 1px solid var(--hud-line);
+  color: var(--hud-text-secondary);
+  font: 9px ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 26px;
+}
+
+.tech span {
+  border: 1px solid var(--hud-line);
+  padding: 6px 7px;
+  color: var(--hud-yellow);
+  font: 10px ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* ── Listas: Projetos, Experiência e Competências ── */
+.projectList {
+  margin-top: 38px;
+  border-top: 1px solid var(--hud-line);
+}
+
+.project {
+  border-bottom: 1px solid var(--hud-line);
+}
+
+.projectRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 12px;
+}
+
+.project button {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 46px 1fr 20px;
+  gap: 13px;
+  align-items: center;
+  border: 0;
+  background: transparent;
+  color: var(--hud-text);
+  padding: 21px 0;
+  text-align: left;
+ cursor: none;
+}
+
+.project button:hover,
+.project.selected button {
+  background: var(--hud-panel-active);
+  padding-left: 13px;
+  padding-right: 13px;
+}
+
+.projectIndex {
+  font: 11px ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--hud-yellow);
+}
+
+.project small,
+.timeline small {
+  color: var(--hud-yellow);
+  font: 10px ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.project h2,
+.skillGrid h2,
+.timeline h2 {
+  margin: 6px 0;
+  font-size: 22px;
+  letter-spacing: -0.05em;
+}
+
+.project p,
+.timeline p {
+  margin: 0;
+  color: var(--hud-text-secondary);
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+.project i {
+  font-style: normal;
+  color: var(--hud-yellow);
+}
+
+.repositoryLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  align-self: center;
+  border: 1px solid var(--hud-line);
+  color: var(--hud-text-secondary);
+  padding: 7px 8px;
+  font: 9px ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .04em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 180ms ease, color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
+.repositoryLink svg {
+  width: 13px;
+  height: 13px;
+}
+
+.repositoryLink:hover,
+.repositoryLink:focus-visible {
+  border-color: var(--hud-yellow);
+  color: var(--hud-yellow);
+  background: color-mix(in srgb, var(--hud-yellow) 7%, transparent);
+}
+
+.repositoryLink:active {
+  transform: translateY(1px);
+  background: var(--hud-yellow);
+  color: var(--hud-bg);
+}
+
+.timeline {
+  margin-top: 40px;
+}
+
+.timeline article {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 18px;
+  padding: 23px 0;
+  border-top: 1px solid var(--hud-line);
+}
+
+.timeline article > span,
+.skillGrid article > span {
+  color: var(--hud-yellow);
+  font: 11px ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.timeline h3 {
+  margin: 0 0 14px;
+  font-size: 13px;
+  color: var(--hud-text-secondary);
+  font-weight: 400;
+}
+
+.skillGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 39px;
+  border-top: 1px solid var(--hud-line);
+  border-left: 1px solid var(--hud-line);
+}
+
+.skillGrid article {
+  min-height: 160px;
+  padding: 19px;
+  border-right: 1px solid var(--hud-line);
+  border-bottom: 1px solid var(--hud-line);
+  background: color-mix(in srgb, var(--hud-panel) 32%, transparent);
+}
+
+.skillGrid article:nth-child(2n) {
+  background: transparent;
+}
+
+.skillGrid p {
+  margin: 0;
+  color: var(--hud-text-secondary);
+  font: 12px ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.skillGrid i {
+  display: block;
+  color: var(--hud-yellow);
+  font: 10px ui-monospace, SFMono-Regular, Menlo, monospace;
+  margin-top: 24px;
+  font-style: normal;
+}
+
+/* ── Módulos: Sobre e Contato ── */
+.about {
+  max-width: 580px;
+  margin: 38px 0;
+  color: var(--hud-text-secondary);
+  font-size: 23px;
+  line-height: 1.48;
+  letter-spacing: -0.03em;
+}
+
+.linkRow {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.linkRow a {
+  border: 1px solid var(--hud-line);
+  padding: 12px 14px;
+  color: var(--hud-yellow);
+  font: 12px ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.linkRow a span {
+  margin-left: 15px;
+}
+
+.email {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--hud-yellow);
+  font: clamp(20px, 3vw, 34px) ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--hud-yellow);
+   user-select: text;
+  -webkit-user-select: text;
+}
+
+.contactNote {
+  margin-top: 35px;
+  color: var(--hud-text-secondary);
+  font: 10px ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+
+/* ── Módulo Currículo / Resume ── */
+
+.resumeHeader {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.resumeHeader p {
+  margin: 18px 0 0;
+  color: var(--hud-text-secondary);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.resumeDownload {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  flex: none;
+  gap: 20px;
+  border: 1px solid var(--hud-yellow);
+  background: var(--hud-yellow);
+  color: var(--hud-bg);
+  padding: 13px 16px;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .02em;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.resumeDownload span {
+  margin-left: 0;
+}
+
+.resumeDownload:hover {
+  background: transparent;
+  color: var(--hud-yellow);
+}
+
+/* Moldura minimalista do documento */
+
+.resumeFrame {
+  position: relative;
+  margin-top: 2rem;
+  overflow: hidden;
+  border: 1px solid var(--hud-line);
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.resumeFrame::after {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 12px;
+  height: 12px;
+  border-right: 2px solid var(--hud-yellow);
+  border-bottom: 2px solid var(--hud-yellow);
+  pointer-events: none;
+}
+
+.resumeFrameLabel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 11px 14px;
+  border-top: 1px solid var(--hud-yellow);
+  border-bottom: 1px solid var(--hud-line);
+  color: var(--hud-yellow);
+  font: 9px ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: .1em;
+}
+
+.resumeOpen {
+  color: var(--hud-text-secondary);
+  font: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 180ms ease;
+}
+
+.resumeOpen:hover {
+  color: var(--hud-yellow);
+}
+
+/* Visualizador do PDF */
+
+.resumePdf {
+  display: block;
+  width: 100%;
+  height: 480px;
+  border: 0;
+  background: #fff;
+}
+
+/* ── Responsividade ── */
+
+@media (max-width: 768px) {
+  .resumeHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .resumePdf {
+    height: 420px;
+  }
+}
+
+@media (max-width: 480px) {
+  .resumeHeader p {
+    font-size: 14px;
+  }
+
+  .resumeFrame {
+    margin-top: 1.5rem;
+  }
+
+  .resumeFrameLabel {
+    padding: 10px;
+    font-size: 8px;
+  }
+
+  .resumePdf {
+    height: 360px;
+  }
+}
+
+/* ── Modal de Projetos (Dialog) ── */
+.overlay {
+  position: fixed;
+  z-index: 10;
+  inset: 0;
+  padding: 30px;
+  display: grid;
+  place-items: center;
+  background: rgba(8, 1, 6, 0.78);
+  backdrop-filter: blur(4px);
+}
+
+.modal {
+  width: min(780px, 100%);
+  max-height: calc(100vh - 60px);
+  overflow: auto;
+  background: var(--hud-panel);
+  border: 1px solid var(--hud-line);
+  border-top: 3px solid var(--hud-yellow);
+  padding: 29px;
+  outline: none;
+  box-shadow: 18px 18px 0 rgba(0, 0, 0, 0.32);
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.modal h2 {
+  margin: 8px 0 0;
+  font-size: 43px;
+  letter-spacing: -0.07em;
+}
+
+.close {
+  border: 1px solid var(--hud-line);
+  background: transparent;
+  width: 35px;
+  height: 35px;
+  color: var(--hud-text);
+ cursor: none;
+  font-size: 25px;
+}
+
+.modalLead {
+  max-width: 620px;
+  margin: 35px 0;
+  color: var(--hud-text-secondary);
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+.modalColumns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 34px;
+  padding-top: 22px;
+  border-top: 1px solid var(--hud-line);
+}
+
+.modalColumns ul {
+  margin: 15px 0 0;
+  padding-left: 18px;
+  color: var(--hud-text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ── Rodapé / Footer ── */
+.footer {
+  border-top: 1px solid var(--hud-line);
+  min-height: 38px;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  color: var(--hud-text-secondary);
+  font: 9px ui-monospace, SFMono-Regular, Menlo, monospace;
+  letter-spacing: 0.08em;
+}
+
+/* ==========================================================================
+   MEDIA QUERIES (RESPONSIVIDADE)
+   ========================================================================== */
+
+/* ── Dispositivos Médios (Tablets & Telas Menores) ── */
+@media (max-width: 900px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .nav {
+    order: 0;
+    padding: 10px 14px;
+    border-right: 0;
+    border-bottom: 1px solid var(--hud-line);
+    display: flex;
+    gap: 3px;
+    overflow: auto;
+  }
+
+  .nav > p {
+    display: none;
+  }
+
+  .nav button {
+    white-space: nowrap;
+    width: auto;
+    padding: 10px;
+    border-left: 0;
+    border-bottom: 2px solid transparent;
+  }
+
+  .nav button small,
+  .nav button b {
+    display: none;
+  }
+
+  .nav .active {
+    border-left: 0;
+    border-bottom-color: var(--hud-yellow);
+  }
+
+  .content {
+    padding: 44px 28px;
+    min-height: 620px;
+  }
+
+  .context {
+    border-left: 0;
+    border-top: 1px solid var(--hud-line);
+    min-height: 190px;
+  }
+
+  .contextBody {
+    padding: 22px 28px;
+  }
+
+  .contextFoot {
+    display: none;
+  }
+
+  .footer {
+    font-size: 8px;
+  }
+
+  .footer span:last-child {
+    display: none;
+  }
+}
+
+/* ── Dispositivos Pequenos (Smartphones) ── */
+@media (max-width: 560px) {
+  .grid {
+    background-size: 38px 38px;
+  }
+
+  .header {
+    height: 59px;
+    padding: 0 16px;
+    gap: 14px;
+  }
+
+  .system {
+    font-size: 9px;
+  }
+
+  .system span {
+    display: none;
+  }
+
+  .layout {
+    min-height: calc(100vh - 93px);
+  }
+
+  .content {
+    padding: 36px 20px;
+    min-height: 560px;
+  }
+
+  .content h1 {
+    font-size: 54px;
+  }
+
+  .lead {
+    font-size: 18px;
+  }
+
+  .actions,
+  .readout {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .readout {
+    margin-top: 48px;
+  }
+
+  .project button {
+    grid-template-columns: 28px 1fr 16px;
+  }
+
+  .projectRow {
+    align-items: stretch;
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .repositoryLink {
+    align-self: center;
+  }
+
+  .project h2 {
+    font-size: 19px;
+  }
+
+  .skillGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .about {
+    font-size: 20px;
+  }
+
+  .footer {
+    padding: 0 15px;
+  }
+
+  .footer span:nth-child(2) {
+    display: none;
+  }
+
+  .overlay {
+    padding: 12px;
+  }
+
+  .modal {
+    max-height: calc(100vh - 24px);
+    padding: 22px 18px;
+  }
+
+  .modal h2 {
+    font-size: 35px;
+  }
+
+  .modalColumns {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .resumeHeader { align-items: flex-start; flex-direction: column; }
+
+  .resumePdf { height: 68vh; min-height: 420px; }
+}
