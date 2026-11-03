@@ -2,7 +2,7 @@
 
 <div align="center">
 
-[![Status](https://img.shields.io/badge/STATUS-ONLINE-success?style=for-the-badge&logo=none)](https://github.com/guilhermesouzalima)
+[![Status](https://img.shields.io/badge/STATUS-ONLINE-success?style=for-the-badge&logo=none)](https://github.com/guiszlima)
 [![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)](https://react.dev/)
 [![Next.js](https://img.shields.io/badge/Next.js-App_Router-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
 [![GSAP](https://img.shields.io/badge/GSAP-Animations-orange?style=for-the-badge&logo=greensock)](https://gsap.com/)
@@ -64,11 +64,11 @@ src/
 
 ### 1. Clone o repositório
 
-Substitua `seu-repositorio` pelo nome real do repositório:
+
 
 ```bash
-git clone https://github.com/guilhermesouzalima/seu-repositorio.git
-cd seu-repositorio
+git clone https://github.com/guiszlima/guiszlima-portfolio
+cd guiszlima-portfolio 
 ```
 
 ### 2. Instale as dependências
@@ -105,10 +105,14 @@ Acesse [http://localhost:3000](http://localhost:3000).
 
 ## 📞 Contato
 
-- **GitHub:** [guilhermesouzalima](https://github.com/guilhermesouzalima)
+- **GitHub:** [guiszlima](https://github.com/guiszlima)
 - **LinkedIn:** [guilhermesouzalima](https://www.linkedin.com/in/guilhermesouzalima/)
 - **WhatsApp:** [Enviar mensagem](https://wa.me/5511991993229?text=Ol%C3%A1%2C%20Guilherme!%20Vim%20pelo%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar%20com%20voc%C3%AA.)
 
 ---
+## 📄 Licença
+Este projeto está licenciado sob a Licença MIT.
+
+Consulte o arquivo LICENSE para ver o texto completo da licença.
 
 Desenvolvido por **Guilherme Souza Lima**.
