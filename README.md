@@ -114,5 +114,5 @@ Acesse [http://localhost:3000](http://localhost:3000).
 Este projeto está licenciado sob a Licença MIT.
 
 Consulte o arquivo LICENSE para ver o texto completo da licença.
-
+---
 Desenvolvido por **Guilherme Souza Lima**.
