@@ -1,1 +1,48 @@
-:root { --hud-bg:#14050F; --hud-bg-alt:#1A0914; --hud-panel:#24101D; --hud-panel-active:#39202B; --hud-wine:#70263B; --hud-yellow:#F2E65B; --hud-text:#F1E8EE; --hud-text-secondary:#C8BDC4; --hud-line:#655626; --hud-magenta:#CD4C7D; } *{box-sizing:border-box} html{background:var(--hud-bg);scroll-behavior:smooth} body{margin:0;background:var(--hud-bg);color:var(--hud-text);font-family:Arial,Helvetica,sans-serif;overflow-x:hidden} button,a{font:inherit} button{color:inherit} a{color:inherit;text-decoration:none} ::selection{background:var(--hud-yellow);color:var(--hud-bg)} :focus-visible{outline:2px solid var(--hud-yellow);outline-offset:3px}
+:root {
+  --hud-bg: #14050F;
+  --hud-bg-alt: #1A0914;
+  --hud-panel: #24101D;
+  --hud-panel-active: #39202B;
+  --hud-wine: #70263B;
+  --hud-yellow: #F2E65B;
+  --hud-text: #F1E8EE;
+  --hud-text-secondary: #C8BDC4;
+  --hud-line: #655626;
+  --hud-magenta: #CD4C7D;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  background: var(--hud-bg);
+  color: var(--hud-text);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden; /* Trava o scroll global da página */
+}
+
+button, a {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--hud-yellow);
+  color: var(--hud-bg);
+}
+
+:focus-visible {
+  outline: 2px solid var(--hud-yellow);
+  outline-offset: 3px;
+}

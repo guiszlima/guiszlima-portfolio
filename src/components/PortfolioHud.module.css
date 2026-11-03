@@ -39,21 +39,22 @@
 
 /* Se desejar esconder o cursor padrão do sistema na área da aplicação: */
 .hud {
-  min-height: 100vh;
-  position: relative;
-  isolation: isolate;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   background: var(--hud-bg);
+  position: relative;
+  isolation: isolate;
   font-family: Arial, Helvetica, sans-serif;
-  -webkit-user-select: none; /* Safari / Chrome antigo */
-  -moz-user-select: none;    /* Firefox */
-  -ms-user-select: none;     /* IE / Edge antigo */
   user-select: none;
-  cursor: none; /* Cursor técnico estilo mira que permite selecionar texto normalmente */
+  cursor: none;
 }
 /* ── Header Principal ── */
 .header {
   height: 72px;
+  flex-shrink: 0; /* Impede que o header mude de tamanho */
   border-bottom: 1px solid color-mix(in srgb, var(--hud-line) 70%, transparent);
   display: flex;
   align-items: center;
@@ -154,18 +155,24 @@
 }
 
 /* ── Grid Layout Estrutural ── */
+
 .layout {
   display: grid;
   grid-template-columns: 218px minmax(0, 1fr) 285px;
-  min-height: calc(100vh - 110px);
+  flex: 1; /* Preenche todo o espaço vertical restante com precisão */
+  min-height: 0; /* Crucial para o grid respeitar o flex container e permitir scroll interno */
   width: min(1500px, 100%);
   margin: auto;
+  overflow: hidden;
 }
+
 
 /* ── Navegação Lateral (Módulos) ── */
 .nav {
   border-right: 1px solid color-mix(in srgb, var(--hud-line) 70%, transparent);
   padding: 42px 18px;
+  overflow: hidden; /* Impede qualquer scroll no menu */
+  min-height: 0;
 }
 
 .nav > p,
@@ -220,10 +227,14 @@
 
 /* ── Área Principal de Conteúdo ── */
 .content {
-  padding: 58px clamp(30px, 6vw, 94px);
+  padding: 20px clamp(30px, 6vw, 94px);
   min-width: 0;
+  overflow-y: auto; /* Ativa a rolagem apenas aqui */
+  min-height: 0;
 }
-
+.content::-webkit-scrollbar{
+    display: none;
+}
 .kicker {
   margin-bottom: 22px;
 }
@@ -324,10 +335,12 @@
 
 /* ── Painel de Contexto Lateral ── */
 .context {
-  border-left: 1px solid color-mix(in srgb, var(--hud-line) 70%, transparent);
+ border-left: 1px solid color-mix(in srgb, var(--hud-line) 70%, transparent);
   background: color-mix(in srgb, var(--hud-panel) 62%, transparent);
   display: flex;
   flex-direction: column;
+  overflow: hidden; /* Impede qualquer scroll no painel lateral */
+  min-height: 0;
 }
 
 .context > .panelLabel {
@@ -494,7 +507,7 @@
   display: grid;
   grid-template-columns: 44px 1fr;
   gap: 18px;
-  padding: 23px 0;
+  padding: 10px 0;
   border-top: 1px solid var(--hud-line);
 }
 
@@ -520,7 +533,7 @@
 }
 
 .skillGrid article {
-  min-height: 160px;
+  
   padding: 19px;
   border-right: 1px solid var(--hud-line);
   border-bottom: 1px solid var(--hud-line);
@@ -797,8 +810,9 @@
 
 /* ── Rodapé / Footer ── */
 .footer {
+  flex-shrink: 0; /* Garante que o rodapé nunca seja esmagado ou oculto */
   border-top: 1px solid var(--hud-line);
-  min-height: 38px;
+  height: 38px;
   padding: 0 28px;
   display: flex;
   align-items: center;
@@ -807,6 +821,7 @@
   color: var(--hud-text-secondary);
   font: 9px ui-monospace, SFMono-Regular, Menlo, monospace;
   letter-spacing: 0.08em;
+  background: color-mix(in srgb, var(--hud-bg) 92%, transparent);
 }
 
 /* ==========================================================================

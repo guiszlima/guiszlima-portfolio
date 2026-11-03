@@ -1,4 +1,3 @@
-
 # Dependencies
 /node_modules
 /.pnp
@@ -27,20 +26,20 @@
 
 # TypeScript
 *.tsbuildinfo
-next-env.d.ts
 
-# Logs
+# Logs & Package Managers
 npm-debug.log*
 yarn-debug.log*
 pnpm-debug.log*
 lerna-debug.log*
+bun.lockb
 
 # Testing
 /coverage
 /playwright-report/
 /test-results/
 
-# Local tooling
+# Local tooling & OS
 .DS_Store
 Thumbs.db
 *.swp
@@ -50,9 +49,7 @@ Thumbs.db
 
 # IDEs
 .idea/
-.vscode/*
-!.vscode/extensions.json
-!.vscode/settings.json
+.vscode/
 
 # Local certificates and keys
 *.pem

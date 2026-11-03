@@ -283,8 +283,8 @@ export function PortfolioHud() {
         <section id="main" className={styles.content} ref={content} aria-live="polite">
           {module === 'overview' && <Overview t={t} locale={locale} copy={copy} onOpen={(event) => openProject(selected, event.currentTarget)} />}
           {module === 'projects' && <Projects locale={locale} selected={selected} onSelect={setSelected} onOpen={openProject} />}
-          {module === 'experience' && <Experience t={t} />}
-          {module === 'skills' && <Skills t={t} />}
+          {module === 'experience' && <Experience locale={locale} t={t} />}
+          {module === 'skills' && <Skills locale={locale} t={t} />}
           {module === 'about' && <About locale={locale} t={t} />}
           {module === 'resume' && <Resume locale={locale} copy={copy} />}
           {module === 'contact' && <Contact t={t} locale={locale} copy={copy} />}
@@ -353,40 +353,110 @@ export function PortfolioHud() {
   );
 }
 
-function Overview({t, locale, copy, onOpen}:{t:(v:{pt:string;en:string})=>string; locale:Locale; copy:Record<string,string>; onOpen:(e:MouseEvent<HTMLButtonElement>)=>void}) {
+function Overview({
+  locale,
+  t,
+  copy,
+  onOpen,
+}: {
+  locale: Locale;
+  t: (value: { pt: string; en: string }) => string;
+  copy: Record<string, string>;
+  onOpen: (e: MouseEvent<HTMLButtonElement>) => void;
+}) {
+  const whatsappLabel = locale === 'pt' ? 'WhatsApp' : 'Chat on WhatsApp';
+  const linkedinLabel = locale === 'pt' ? 'LinkedIn' : 'LinkedIn Profile';
+  const role = t(data.profile.role);
+  const tagline = t(data.profile.tagline);
+  const availability = t(data.profile.availability);
+  const location = t(data.profile.location);
+
+  const linkedinUrl = "https://www.linkedin.com/in/guilhermesouzalima/";
+
   return (
     <>
       <p className={styles.kicker}>01 / SYSTEM READY</p>
-      <h1>{data.profile.name}<em>.</em></h1>
-      <p className={styles.role}>{t(data.profile.role)}</p>
-      <p className={styles.lead}>{t(data.profile.tagline)}</p>
+      <h1>
+        {data.profile.name}
+        <em>.</em>
+      </h1>
+      <p className={styles.role}>{role}</p>
+      <p className={styles.lead}>{tagline}</p>
       <div className={styles.actions}>
-        <button className={styles.primary} onClick={onOpen}>{copy.inspect} <span>↗</span></button>
-        <a className={styles.secondary} href={whatsappUrl} target="_blank" rel="noreferrer">{locale === 'pt' ? 'WhatsApp' : 'Chat on WhatsApp'} <span>↗</span></a>
+        <button className={styles.primary} onClick={onOpen}>
+          {copy.inspect} <span>↗</span>
+        </button>
+        <a
+          className={styles.secondary}
+          href={whatsappUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {whatsappLabel} <span>↗</span>
+        </a>
+        <a
+          className={styles.secondary}
+          href={linkedinUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {linkedinLabel} <span>↗</span>
+        </a>
       </div>
       <div className={styles.readout}>
-        <span>◉ {t(data.profile.availability)}</span>
-        <span>⌖ {t(data.profile.location)}</span>
+        <span>◉ {availability}</span>
+        <span>⌖ {location}</span>
       </div>
     </>
   );
 }
 
-function Projects({locale, selected, onSelect, onOpen}:{locale:Locale; selected:Project; onSelect:(p:Project)=>void; onOpen:(p:Project, s:HTMLElement)=>void}) {
+function Projects({
+  locale,
+  selected,
+  onSelect,
+  onOpen,
+}: {
+  locale: Locale;
+  selected: Project;
+  onSelect: (p: Project) => void;
+  onOpen: (p: Project, s: HTMLElement) => void;
+}) {
+  const title = locale === 'pt' ? 'Projetos' : 'Projects';
+
   return (
     <>
       <p className={styles.kicker}>02 / ARCHIVE</p>
-      <h1>Projects<em>.</em></h1>
-      <ProjectList locale={locale} selected={selected} onSelect={onSelect} onOpen={onOpen} />
+      <h1>
+        {title}
+        <em>.</em>
+      </h1>
+      <ProjectList
+        locale={locale}
+        selected={selected}
+        onSelect={onSelect}
+        onOpen={onOpen}
+      />
     </>
   );
 }
 
-function Experience({t}:{t:(v:{pt:string;en:string})=>string}) {
+function Experience({
+  locale,
+  t,
+}: {
+  locale: Locale;
+  t: (value: { pt: string; en: string }) => string;
+}) {
+  const title = locale === 'pt' ? 'Experiência' : 'Experience';
+
   return (
     <>
       <p className={styles.kicker}>03 / LOG</p>
-      <h1>Experience<em>.</em></h1>
+      <h1>
+        {title}
+        <em>.</em>
+      </h1>
       <div className={styles.timeline}>
         {data.experience.map((item, index) => (
           <article key={item.id}>
@@ -404,18 +474,28 @@ function Experience({t}:{t:(v:{pt:string;en:string})=>string}) {
   );
 }
 
-function Skills({t}:{t:(v:{pt:string;en:string})=>string}) {
+function Skills({
+  locale,
+  t,
+}: {
+  locale: Locale;
+  t: (value: { pt: string; en: string }) => string;
+}) {
+  const title = locale === 'pt' ? 'Habilidades' : 'Skills';
+
   return (
     <>
       <p className={styles.kicker}>04 / LOADOUT</p>
-      <h1>Skills<em>.</em></h1>
+      <h1>
+        {title}
+        <em>.</em>
+      </h1>
       <div className={styles.skillGrid}>
         {data.skills.map((skill, index) => (
           <article key={skill.id}>
             <span>0{index + 1}</span>
             <h2>{skill.name}</h2>
             <p>{t(skill.category)}</p>
-            <i>{skill.level}</i>
           </article>
         ))}
       </div>
@@ -463,7 +543,6 @@ function About({
     </>
   );
 }
-
 
 function Resume({
   locale,
@@ -530,18 +609,57 @@ function Resume({
   );
 }
 
+function Contact({
+  locale,
+  t,
+  copy,
+}: {
+  locale: Locale;
+  t: (value: { pt: string; en: string }) => string;
+  copy: Record<string, string>;
+}) {
+  const title = locale === 'pt' ? 'Contato' : 'Contact';
+  const tagline = t(data.profile.tagline);
+  const whatsappLabel =
+    locale === 'pt' ? 'Conversar pelo WhatsApp' : 'Chat on WhatsApp';
+  const linkedinLabel =
+    locale === 'pt' ? 'Conectar no LinkedIn' : 'Connect on LinkedIn';
 
-function Contact({t, locale, copy}:{t:(v:{pt:string;en:string})=>string; locale:Locale; copy:Record<string,string>}) {
+  const linkedinUrl = "https://www.linkedin.com/in/guilhermesouzalima/";
+
   return (
     <>
       <p className={styles.kicker}>07 / COMMS</p>
-      <h1>Contact<em>.</em></h1>
-      <p className={styles.about}>{t(data.profile.tagline)}</p>
-      <a className={styles.email} href={`mailto:${data.profile.email}`}>{data.profile.email}<span>↗</span></a>
+      <h1>
+        {title}
+        <em>.</em>
+      </h1>
+      <p className={styles.about}>{tagline}</p>
+      <a className={styles.email} href={`mailto:${data.profile.email}`}>
+        {data.profile.email}
+        <span>↗</span>
+      </a>
       <div className={styles.actions}>
-        <a className={styles.secondary} href={whatsappUrl} target="_blank" rel="noreferrer">{locale === 'pt' ? 'Conversar pelo WhatsApp' : 'Chat on WhatsApp'} <span>↗</span></a>
+        <a
+          className={styles.secondary}
+          href={whatsappUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {whatsappLabel} <span>↗</span>
+        </a>
+        <a
+          className={styles.secondary}
+          href={linkedinUrl}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {linkedinLabel} <span>↗</span>
+        </a>
       </div>
-      <p className={styles.contactNote}>CHANNEL OPEN · {copy.contact.toUpperCase()}</p>
+      <p className={styles.contactNote}>
+        CHANNEL OPEN · {copy.contact.toUpperCase()}
+      </p>
     </>
   );
 }

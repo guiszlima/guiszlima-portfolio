@@ -351,8 +351,7 @@
       "category": {
         "pt": "Linguagem",
         "en": "Language"
-      },
-      "level": "proficient"
+      }
     },
     {
       "id": "dotnet",
@@ -360,8 +359,7 @@
       "category": {
         "pt": "Backend",
         "en": "Backend"
-      },
-      "level": "proficient"
+      }
     },
     {
       "id": "aspnet-core",
@@ -369,8 +367,7 @@
       "category": {
         "pt": "Backend",
         "en": "Backend"
-      },
-      "level": "proficient"
+      }
     },
     {
       "id": "entity-framework-core",
@@ -378,8 +375,7 @@
       "category": {
         "pt": "Persistência",
         "en": "Data access"
-      },
-      "level": "proficient"
+      }
     },
     {
       "id": "php",
@@ -387,8 +383,7 @@
       "category": {
         "pt": "Linguagem",
         "en": "Language"
-      },
-      "level": "core"
+      }
     },
     {
       "id": "laravel",
@@ -396,8 +391,7 @@
       "category": {
         "pt": "Backend",
         "en": "Backend"
-      },
-      "level": "core"
+      }
     },
     {
       "id": "rest-api",
@@ -405,8 +399,7 @@
       "category": {
         "pt": "Integração",
         "en": "Integration"
-      },
-      "level": "proficient"
+      }
     },
     {
       "id": "sql",
@@ -414,8 +407,7 @@
       "category": {
         "pt": "Dados",
         "en": "Data"
-      },
-      "level": "proficient"
+      }
     },
     {
       "id": "postgresql",
@@ -423,8 +415,7 @@
       "category": {
         "pt": "Banco de dados",
         "en": "Database"
-      },
-      "level": "working"
+      }
     },
     {
       "id": "mysql",
@@ -432,8 +423,7 @@
       "category": {
         "pt": "Banco de dados",
         "en": "Database"
-      },
-      "level": "proficient"
+      }
     },
     {
       "id": "sql-server",
@@ -441,8 +431,7 @@
       "category": {
         "pt": "Banco de dados",
         "en": "Database"
-      },
-      "level": "working"
+      }
     },
     {
       "id": "angular",
@@ -450,8 +439,7 @@
       "category": {
         "pt": "Frontend",
         "en": "Frontend"
-      },
-      "level": "working"
+      }
     },
     {
       "id": "typescript",
@@ -459,8 +447,7 @@
       "category": {
         "pt": "Linguagem",
         "en": "Language"
-      },
-      "level": "working"
+      }
     },
     {
       "id": "react-nextjs",
@@ -468,8 +455,7 @@
       "category": {
         "pt": "Frontend",
         "en": "Frontend"
-      },
-      "level": "working"
+      }
     },
     {
       "id": "python",
@@ -477,8 +463,7 @@
       "category": {
         "pt": "Linguagem",
         "en": "Language"
-      },
-      "level": "working"
+      }
     },
     {
       "id": "powershell",
@@ -486,8 +471,7 @@
       "category": {
         "pt": "Automação",
         "en": "Automation"
-      },
-      "level": "working"
+      }
     },
     {
       "id": "docker",
@@ -495,8 +479,7 @@
       "category": {
         "pt": "Infraestrutura",
         "en": "Infrastructure"
-      },
-      "level": "working"
+      }
     },
     {
       "id": "git-github",
@@ -504,8 +487,7 @@
       "category": {
         "pt": "Ferramentas",
         "en": "Tools"
-      },
-      "level": "proficient"
+      }
     },
     {
       "id": "clean-architecture",
@@ -513,8 +495,7 @@
       "category": {
         "pt": "Práticas de engenharia",
         "en": "Engineering practices"
-      },
-      "level": "working"
+      }
     },
     {
       "id": "advpl",
@@ -522,8 +503,7 @@
       "category": {
         "pt": "Sistemas corporativos",
         "en": "Enterprise systems"
-      },
-      "level": "working"
+      }
     },
     {
       "id": "maven-xml",
@@ -531,92 +511,77 @@
       "category": {
         "pt": "Ferramentas de desenvolvimento",
         "en": "Developer tooling"
-      },
-      "level": "working"
+      }
     },
     {
       "id": "tailwind-css",
       "name": "Tailwind CSS",
-      "category": { "pt": "Frontend", "en": "Frontend" },
-      "level": "working"
+      "category": { "pt": "Frontend", "en": "Frontend" }
     },
     {
       "id": "jwt",
       "name": "JWT",
-      "category": { "pt": "Segurança", "en": "Security" },
-      "level": "working"
+      "category": { "pt": "Segurança", "en": "Security" }
     },
     {
       "id": "xunit",
       "name": "xUnit",
-      "category": { "pt": "Testes", "en": "Testing" },
-      "level": "working"
+      "category": { "pt": "Testes", "en": "Testing" }
     },
     {
       "id": "moq",
       "name": "Moq",
-      "category": { "pt": "Testes", "en": "Testing" },
-      "level": "working"
+      "category": { "pt": "Testes", "en": "Testing" }
     },
     {
       "id": "native-aot",
       "name": "Native AOT",
-      "category": { "pt": "Runtime", "en": "Runtime" },
-      "level": "working"
+      "category": { "pt": "Runtime", "en": "Runtime" }
     },
     {
       "id": "maven",
       "name": "Maven",
-      "category": { "pt": "Ferramentas de desenvolvimento", "en": "Developer tooling" },
-      "level": "working"
+      "category": { "pt": "Ferramentas de desenvolvimento", "en": "Developer tooling" }
     },
     {
       "id": "xml",
       "name": "XML",
-      "category": { "pt": "Dados", "en": "Data" },
-      "level": "working"
+      "category": { "pt": "Dados", "en": "Data" }
     },
     {
       "id": "woocommerce",
       "name": "WooCommerce",
-      "category": { "pt": "E-commerce", "en": "E-commerce" },
-      "level": "proficient"
+      "category": { "pt": "E-commerce", "en": "E-commerce" }
     },
     {
       "id": "wordpress",
       "name": "WordPress",
-      "category": { "pt": "CMS", "en": "CMS" },
-      "level": "proficient"
+      "category": { "pt": "CMS", "en": "CMS" }
     },
     {
       "id": "automation",
       "name": "Automação", 
-      "category": { "pt": "Automação", "en": "Automation" },
-      "level": "working"
+      "category": { "pt": "Automação", "en": "Automation" }
     },
     {
       "id": "json",
       "name": "JSON",
-      "category": { "pt": "Dados", "en": "Data" },
-      "level": "working"
+      "category": { "pt": "Dados", "en": "Data" }
     },
     {
       "id": "java",
       "name": "Java",
-      "category": { "pt": "Linguagem", "en": "Language" },
-      "level": "working"
+      "category": { "pt": "Linguagem", "en": "Language" }
     },
     {
       "id": "gradle",
       "name": "Gradle",
-      "category": { "pt": "Ferramentas de desenvolvimento", "en": "Developer tooling" },
-      "level": "working"
+      "category": { "pt": "Ferramentas de desenvolvimento", "en": "Developer tooling" }
     },
     {
       "id": "jetbrains-ide",
       "name": "JetBrains IDEs",
-      "category": { "pt": "Ferramentas", "en": "Tools" },
-      "level": "working"
+      "category": { "pt": "Ferramentas", "en": "Tools" }
     }
   ]
 }
