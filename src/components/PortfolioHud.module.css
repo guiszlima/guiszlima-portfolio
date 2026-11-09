@@ -611,7 +611,6 @@
   border: none;
 }
 
-
 /* ==========================================================================
    MEDIA QUERIES PARA CELULARES E TABLETS (< 1024px)
    ========================================================================== */
@@ -723,7 +722,7 @@
     font-size: 18px;
   }
 
-  /* Habilidades (Skills) mantidas em grade responsiva ou 1 coluna se necessário */
+  /* Habilidades (Skills) mantidas em 2 colunas */
   .skillGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -774,7 +773,7 @@
     justify-content: center;
   }
 
-  /* Habilidades em telas muito pequenas (abaixo de 480px) ajustadas para 1 coluna para não espremer */
+  /* Habilidades em 1 coluna em telas extremamente pequenas */
   .skillGrid {
     grid-template-columns: 1fr;
   }
