@@ -38,7 +38,6 @@ export function PortfolioHud() {
     const targetBtn = locale === 'pt' ? localePtRef.current : localeEnRef.current;
     if (!targetBtn || !localeIndicatorRef.current) return;
 
-    // Desliza o indicador amarelo com efeito de física fluida
     gsap.to(localeIndicatorRef.current, {
       x: targetBtn.offsetLeft,
       width: targetBtn.offsetWidth,
@@ -46,7 +45,6 @@ export function PortfolioHud() {
       ease: 'back.out(1.2)'
     });
 
-    // Anima o texto do botão ativado
     gsap.fromTo(
       targetBtn,
       { scale: 0.92 },
@@ -125,9 +123,11 @@ export function PortfolioHud() {
     });
   }, { scope: grid });
 
-  // 6. Rastreamento e movimentação fluida do Cursor Customizado
+  // 6. Rastreamento e movimentação fluida do Cursor Customizado (Apenas em desktop se preferir, ou seguro para touch)
   useEffect(() => {
     if (!cursorRef.current) return;
+    const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
+    if (isTouchDevice) return; // Desativa rastreamento customizado em celulares para evitar bugs
 
     const xTo = gsap.quickTo(cursorRef.current, 'x', { duration: 0.1, ease: 'power3.out' });
     const yTo = gsap.quickTo(cursorRef.current, 'y', { duration: 0.1, ease: 'power3.out' });
@@ -517,14 +517,11 @@ function About({
   return (
     <>
       <p className={styles.kicker}>05 / PROFILE</p>
-
       <h1>
         {title}
         <em>.</em>
       </h1>
-
       <p className={styles.about}>{about}</p>
-
       {links.length > 0 && (
         <div className={styles.linkRow}>
           {links.map((link) => (
@@ -552,43 +549,30 @@ function Resume({
   copy: Record<string, string>;
 }) {
   const title = locale === 'pt' ? 'Currículo' : 'Resume';
-
-  const pdf =
-    locale === 'pt'
-      ? '/resume/resume_br.pdf'
-      : '/resume/resume_en.pdf';
+  const pdf = locale === 'pt' ? '/resume/resume_br.pdf' : '/resume/resume_en.pdf';
 
   return (
     <>
       <p className={styles.kicker}>06 / DOCUMENT ARCHIVE</p>
-
       <div className={styles.resumeHeader}>
         <div>
           <h1>
             {title}
             <em>.</em>
           </h1>
-
           <p>
             {locale === 'pt'
               ? 'Versão para leitura e download.'
               : 'Version available for reading and download.'}
           </p>
         </div>
-
-        <a
-          className={styles.resumeDownload}
-          href={pdf}
-          download
-        >
+        <a className={styles.resumeDownload} href={pdf} download>
           {copy.downloadResume} <span>↗</span>
         </a>
       </div>
-
       <div className={styles.resumeFrame}>
         <div className={styles.resumeFrameLabel}>
           <span>PDF / {title.toUpperCase()}</span>
-
           <a
             href={pdf}
             target="_blank"
@@ -598,7 +582,6 @@ function Resume({
             {locale === 'pt' ? 'ABRIR PDF ↗' : 'OPEN PDF ↗'}
           </a>
         </div>
-
         <iframe
           src={`${pdf}#toolbar=0&navpanes=0&view=FitH`}
           title={title}
@@ -620,11 +603,8 @@ function Contact({
 }) {
   const title = locale === 'pt' ? 'Contato' : 'Contact';
   const tagline = t(data.profile.tagline);
-  const whatsappLabel =
-    locale === 'pt' ? 'Conversar pelo WhatsApp' : 'Chat on WhatsApp';
-  const linkedinLabel =
-    locale === 'pt' ? 'Conectar no LinkedIn' : 'Connect on LinkedIn';
-
+  const whatsappLabel = locale === 'pt' ? 'Conversar pelo WhatsApp' : 'Chat on WhatsApp';
+  const linkedinLabel = locale === 'pt' ? 'Conectar no LinkedIn' : 'Connect on LinkedIn';
   const linkedinUrl = "https://www.linkedin.com/in/guilhermesouzalima/";
 
   return (

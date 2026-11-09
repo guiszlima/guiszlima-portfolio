@@ -1,9 +1,7 @@
 /* ==========================================================================
-   PORTFOLIO HUD INTERATIVO - STYLESHEET
+   PORTFOLIO HUD INTERATIVO - STYLESHEET COM SUPORTE MOBILE
    ========================================================================== */
 
-/* ── Container Principal e Grade de Fundo ── */
-/* ── Estilo do Cursor Customizado ── */
 .cursor {
   position: fixed;
   top: 0;
@@ -22,7 +20,12 @@
   will-change: transform, opacity, box-shadow;
 }
 
-/* ── Grade de Fundo (Pointer events em 'none' para habilitar seleção de texto) ── */
+@media (pointer: coarse) {
+  .cursor {
+    display: none !important;
+  }
+}
+
 .grid {
   position: fixed;
   z-index: -1;
@@ -32,12 +35,10 @@
     linear-gradient(90deg, var(--hud-line) 1px, transparent 1px);
   background-size: 80px 80px;
   opacity: 0.22; 
-  /* 'none' devolve a seleção de texto e comportamento normal do cursor do SO */
   pointer-events: none; 
   will-change: transform, background-position, opacity, filter;
 }
 
-/* Se desejar esconder o cursor padrão do sistema na área da aplicação: */
 .hud {
   height: 100vh;
   height: 100dvh;
@@ -51,10 +52,17 @@
   user-select: none;
   cursor: none;
 }
+
+@media (pointer: coarse) {
+  .hud, .nav button, .primary, .secondary, .project button {
+    cursor: auto !important;
+  }
+}
+
 /* ── Header Principal ── */
 .header {
   height: 72px;
-  flex-shrink: 0; /* Impede que o header mude de tamanho */
+  flex-shrink: 0;
   border-bottom: 1px solid color-mix(in srgb, var(--hud-line) 70%, transparent);
   display: flex;
   align-items: center;
@@ -64,6 +72,7 @@
   position: relative;
   z-index: 2;
 }
+
 .localeGroup {
   position: relative;
   display: flex;
@@ -109,10 +118,12 @@
   color: var(--hud-bg) !important;
   font-weight: 800;
 }
+
 .brand {
   font: 700 22px ui-monospace, SFMono-Regular, Menlo, monospace;
   letter-spacing: -0.12em;
   color: var(--hud-yellow);
+  text-decoration: none;
 }
 
 .brand i {
@@ -132,46 +143,22 @@
   font-size: 9px;
 }
 
-.locale {
-  display: flex;
-  margin-left: auto;
-  border: 1px solid var(--hud-line);
-  padding: 3px;
-}
-
-.locale button {
-  border: 0;
-  background: transparent;
-  color: var(--hud-text-secondary);
-  padding: 5px 8px;
-  font: 11px ui-monospace, SFMono-Regular, Menlo, monospace;
- cursor: none;
-}
-
-.locale .current {
-  background: var(--hud-yellow);
-  color: var(--hud-bg);
-  font-weight: 700;
-}
-
-/* ── Grid Layout Estrutural ── */
-
+/* ── Layout Estrutural Principal ── */
 .layout {
   display: grid;
   grid-template-columns: 218px minmax(0, 1fr) 285px;
-  flex: 1; /* Preenche todo o espaço vertical restante com precisão */
-  min-height: 0; /* Crucial para o grid respeitar o flex container e permitir scroll interno */
+  flex: 1;
+  min-height: 0;
   width: min(1500px, 100%);
   margin: auto;
   overflow: hidden;
 }
 
-
-/* ── Navegação Lateral (Módulos) ── */
+/* ── Navegação Lateral ── */
 .nav {
   border-right: 1px solid color-mix(in srgb, var(--hud-line) 70%, transparent);
   padding: 42px 18px;
-  overflow: hidden; /* Impede qualquer scroll no menu */
+  overflow: hidden;
   min-height: 0;
 }
 
@@ -196,7 +183,6 @@
   color: var(--hud-text-secondary);
   padding: 14px 8px;
   text-align: left;
- cursor: none;
   font-size: 14px;
 }
 
@@ -225,23 +211,25 @@
   opacity: 1;
 }
 
-/* ── Área Principal de Conteúdo ── */
+/* ── Conteúdo Principal ── */
 .content {
-  padding: 20px clamp(30px, 6vw, 94px);
+  padding: 20px clamp(20px, 6vw, 94px);
   min-width: 0;
-  overflow-y: auto; /* Ativa a rolagem apenas aqui */
+  overflow-y: auto;
   min-height: 0;
 }
-.content::-webkit-scrollbar{
-    display: none;
+
+.content::-webkit-scrollbar {
+  display: none;
 }
+
 .kicker {
   margin-bottom: 22px;
 }
 
 .content h1 {
   margin: 0;
-  font-size: clamp(48px, 7vw, 94px);
+  font-size: clamp(36px, 7vw, 94px);
   line-height: 0.9;
   letter-spacing: -0.08em;
 }
@@ -262,7 +250,7 @@
   margin: 0;
   max-width: 500px;
   color: var(--hud-text-secondary);
-  font-size: 21px;
+  font-size: 18px;
   line-height: 1.4;
 }
 
@@ -270,6 +258,7 @@
   display: flex;
   gap: 10px;
   margin-top: 38px;
+  flex-wrap: wrap;
 }
 
 .primary,
@@ -278,9 +267,9 @@
   background: var(--hud-yellow);
   color: var(--hud-bg);
   padding: 13px 17px;
- cursor: none;
   font-size: 13px;
   font-weight: 700;
+  text-decoration: none;
 }
 
 .primary span,
@@ -294,18 +283,7 @@
   display: inline-flex;
   align-items: center;
   gap: 16px;
-  text-decoration: none;
   transition: color 160ms ease, background 160ms ease, transform 160ms ease;
-}
-
-.secondary:hover,
-.secondary:focus-visible {
-  background: var(--hud-yellow);
-  color: var(--hud-bg);
-}
-
-.secondary:active {
-  transform: translateY(1px);
 }
 
 .secondary span {
@@ -313,20 +291,16 @@
   transition: color 160ms ease;
 }
 
-.secondary:hover span,
-.secondary:focus-visible span {
-  color: var(--hud-bg);
-}
-
 .readout {
   display: flex;
   gap: 26px;
-  margin-top: 72px;
+  margin-top: 48px;
   padding-top: 14px;
   border-top: 1px solid var(--hud-line);
   color: var(--hud-text-secondary);
   font: 10px ui-monospace, SFMono-Regular, Menlo, monospace;
   letter-spacing: 0.05em;
+  flex-wrap: wrap;
 }
 
 .readout span:first-child {
@@ -335,11 +309,11 @@
 
 /* ── Painel de Contexto Lateral ── */
 .context {
- border-left: 1px solid color-mix(in srgb, var(--hud-line) 70%, transparent);
+  border-left: 1px solid color-mix(in srgb, var(--hud-line) 70%, transparent);
   background: color-mix(in srgb, var(--hud-panel) 62%, transparent);
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* Impede qualquer scroll no painel lateral */
+  overflow: hidden;
   min-height: 0;
 }
 
@@ -354,7 +328,7 @@
 
 .contextBody h2 {
   margin: 12px 0;
-  font-size: 25px;
+  font-size: 22px;
   letter-spacing: -0.05em;
 }
 
@@ -371,7 +345,7 @@
 }
 
 .location {
-  margin-top: 42px;
+  margin-top: 24px;
 }
 
 .contextFoot {
@@ -386,7 +360,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 7px;
-  margin-top: 26px;
+  margin-top: 20px;
 }
 
 .tech span {
@@ -396,7 +370,89 @@
   font: 10px ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
-/* ── Listas: Projetos, Experiência e Competências ── */
+/* Footer Geral */
+.footer {
+  height: 36px;
+  flex-shrink: 0;
+  border-top: 1px solid color-mix(in srgb, var(--hud-line) 70%, transparent);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 28px;
+  color: var(--hud-text-secondary);
+  font: 9px ui-monospace, SFMono-Regular, Menlo, monospace;
+  background: color-mix(in srgb, var(--hud-bg) 92%, transparent);
+}
+
+/* ── Estilos originais de Habilidades (Skills) ── */
+.skillGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 39px;
+  border-top: 1px solid var(--hud-line);
+  border-left: 1px solid var(--hud-line);
+}
+
+.skillGrid article {
+  padding: 19px;
+  border-right: 1px solid var(--hud-line);
+  border-bottom: 1px solid var(--hud-line);
+  background: color-mix(in srgb, var(--hud-panel) 32%, transparent);
+}
+
+.skillGrid article:nth-child(2n) {
+  background: transparent;
+}
+
+.skillGrid p {
+  margin: 0;
+  color: var(--hud-text-secondary);
+  font: 12px ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.skillGrid i {
+  display: block;
+  color: var(--hud-yellow);
+  font: 10px ui-monospace, SFMono-Regular, Menlo, monospace;
+  margin-top: 24px;
+  font-style: normal;
+}
+
+.about {
+  max-width: 580px;
+  margin: 38px 0;
+  color: var(--hud-text-secondary);
+  font-size: 20px;
+  line-height: 1.48;
+}
+
+.linkRow {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.linkRow a {
+  border: 1px solid var(--hud-line);
+  padding: 12px 14px;
+  color: var(--hud-yellow);
+  font: 12px ui-monospace, SFMono-Regular, Menlo, monospace;
+  text-decoration: none;
+}
+
+.email {
+  display: inline-block;
+  margin-top: 8px;
+  padding: 16px 0;
+  border-bottom: 2px solid var(--hud-yellow);
+  font: clamp(18px, 3vw, 34px) ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--hud-yellow);
+  user-select: text;
+  -webkit-user-select: text;
+  word-break: break-all;
+}
+
+/* ── Estilos originais de Projetos (Desktop) ── */
 .projectList {
   margin-top: 38px;
   border-top: 1px solid var(--hud-line);
@@ -424,7 +480,7 @@
   color: var(--hud-text);
   padding: 21px 0;
   text-align: left;
- cursor: none;
+  cursor: none;
 }
 
 .project button:hover,
@@ -499,349 +555,87 @@
   color: var(--hud-bg);
 }
 
-.timeline {
-  margin-top: 40px;
-}
-
-.timeline article {
-  display: grid;
-  grid-template-columns: 44px 1fr;
-  gap: 18px;
-  padding: 10px 0;
-  border-top: 1px solid var(--hud-line);
-}
-
-.timeline article > span,
-.skillGrid article > span {
-  color: var(--hud-yellow);
-  font: 11px ui-monospace, SFMono-Regular, Menlo, monospace;
-}
-
-.timeline h3 {
-  margin: 0 0 14px;
-  font-size: 13px;
-  color: var(--hud-text-secondary);
-  font-weight: 400;
-}
-
-.skillGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin-top: 39px;
-  border-top: 1px solid var(--hud-line);
-  border-left: 1px solid var(--hud-line);
-}
-
-.skillGrid article {
-  
-  padding: 19px;
-  border-right: 1px solid var(--hud-line);
-  border-bottom: 1px solid var(--hud-line);
-  background: color-mix(in srgb, var(--hud-panel) 32%, transparent);
-}
-
-.skillGrid article:nth-child(2n) {
-  background: transparent;
-}
-
-.skillGrid p {
-  margin: 0;
-  color: var(--hud-text-secondary);
-  font: 12px ui-monospace, SFMono-Regular, Menlo, monospace;
-}
-
-.skillGrid i {
-  display: block;
-  color: var(--hud-yellow);
-  font: 10px ui-monospace, SFMono-Regular, Menlo, monospace;
-  margin-top: 24px;
-  font-style: normal;
-}
-
-/* ── Módulos: Sobre e Contato ── */
-.about {
-  max-width: 580px;
-  margin: 38px 0;
-  color: var(--hud-text-secondary);
-  font-size: 23px;
-  line-height: 1.48;
-  letter-spacing: -0.03em;
-}
-
-.linkRow {
-  display: flex;
-  gap: 12px;
-  flex-wrap: wrap;
-}
-
-.linkRow a {
-  border: 1px solid var(--hud-line);
-  padding: 12px 14px;
-  color: var(--hud-yellow);
-  font: 12px ui-monospace, SFMono-Regular, Menlo, monospace;
-}
-
-.linkRow a span {
-  margin-left: 15px;
-}
-
-.email {
-  display: inline-block;
-  margin-top: 8px;
-  padding: 16px 0;
-  border-bottom: 2px solid var(--hud-yellow);
-  font: clamp(20px, 3vw, 34px) ui-monospace, SFMono-Regular, Menlo, monospace;
-  color: var(--hud-yellow);
-   user-select: text;
-  -webkit-user-select: text;
-}
-
-.contactNote {
-  margin-top: 35px;
-  color: var(--hud-text-secondary);
-  font: 10px ui-monospace, SFMono-Regular, Menlo, monospace;
-}
-
-
-/* ── Módulo Currículo / Resume ── */
-
+/* ── Estilos base do Currículo (Resume) para Desktop ── */
 .resumeHeader {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   justify-content: space-between;
   gap: 24px;
-}
-
-.resumeHeader p {
-  margin: 18px 0 0;
-  color: var(--hud-text-secondary);
-  font-size: 15px;
-  line-height: 1.6;
+  margin-bottom: 30px;
 }
 
 .resumeDownload {
   display: inline-flex;
   align-items: center;
-  justify-content: space-between;
-  flex: none;
-  gap: 20px;
+  gap: 8px;
   border: 1px solid var(--hud-yellow);
   background: var(--hud-yellow);
   color: var(--hud-bg);
-  padding: 13px 16px;
-  font-size: 12px;
-  font-weight: 800;
-  letter-spacing: .02em;
+  padding: 12px 18px;
+  font: 700 12px ui-monospace, SFMono-Regular, Menlo, monospace;
   text-decoration: none;
-  cursor: pointer;
-  transition:
-    background 180ms ease,
-    color 180ms ease;
+  white-space: nowrap;
 }
-
-.resumeDownload span {
-  margin-left: 0;
-}
-
-.resumeDownload:hover {
-  background: transparent;
-  color: var(--hud-yellow);
-}
-
-/* Moldura minimalista do documento */
 
 .resumeFrame {
-  position: relative;
-  margin-top: 2rem;
-  overflow: hidden;
   border: 1px solid var(--hud-line);
-  background: rgba(255, 255, 255, 0.015);
-}
-
-.resumeFrame::after {
-  content: '';
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  width: 12px;
-  height: 12px;
-  border-right: 2px solid var(--hud-yellow);
-  border-bottom: 2px solid var(--hud-yellow);
-  pointer-events: none;
+  background: var(--hud-panel);
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  margin-top: 20px;
 }
 
 .resumeFrameLabel {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  gap: 14px;
-  padding: 11px 14px;
-  border-top: 1px solid var(--hud-yellow);
+  align-items: center;
+  padding: 12px 16px;
   border-bottom: 1px solid var(--hud-line);
+  font: 11px ui-monospace, SFMono-Regular, Menlo, monospace;
   color: var(--hud-yellow);
-  font: 9px ui-monospace, SFMono-Regular, Menlo, monospace;
-  letter-spacing: .1em;
 }
 
 .resumeOpen {
-  color: var(--hud-text-secondary);
-  font: inherit;
+  color: var(--hud-text);
   text-decoration: none;
-  white-space: nowrap;
-  transition: color 180ms ease;
 }
 
 .resumeOpen:hover {
   color: var(--hud-yellow);
 }
 
-/* Visualizador do PDF */
-
 .resumePdf {
-  display: block;
   width: 100%;
-  height: 480px;
-  border: 0;
-  background: #fff;
+  flex: 1;
+  border: none;
 }
 
-/* ── Responsividade ── */
-
-@media (max-width: 768px) {
-  .resumeHeader {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .resumePdf {
-    height: 420px;
-  }
-}
-
-@media (max-width: 480px) {
-  .resumeHeader p {
-    font-size: 14px;
-  }
-
-  .resumeFrame {
-    margin-top: 1.5rem;
-  }
-
-  .resumeFrameLabel {
-    padding: 10px;
-    font-size: 8px;
-  }
-
-  .resumePdf {
-    height: 360px;
-  }
-}
-
-/* ── Modal de Projetos (Dialog) ── */
-.overlay {
-  position: fixed;
-  z-index: 10;
-  inset: 0;
-  padding: 30px;
-  display: grid;
-  place-items: center;
-  background: rgba(8, 1, 6, 0.78);
-  backdrop-filter: blur(4px);
-}
-
-.modal {
-  width: min(780px, 100%);
-  max-height: calc(100vh - 60px);
-  overflow: auto;
-  background: var(--hud-panel);
-  border: 1px solid var(--hud-line);
-  border-top: 3px solid var(--hud-yellow);
-  padding: 29px;
-  outline: none;
-  box-shadow: 18px 18px 0 rgba(0, 0, 0, 0.32);
-}
-
-.modalHeader {
-  display: flex;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-.modal h2 {
-  margin: 8px 0 0;
-  font-size: 43px;
-  letter-spacing: -0.07em;
-}
-
-.close {
-  border: 1px solid var(--hud-line);
-  background: transparent;
-  width: 35px;
-  height: 35px;
-  color: var(--hud-text);
- cursor: none;
-  font-size: 25px;
-}
-
-.modalLead {
-  max-width: 620px;
-  margin: 35px 0;
-  color: var(--hud-text-secondary);
-  font-size: 19px;
-  line-height: 1.5;
-}
-
-.modalColumns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 34px;
-  padding-top: 22px;
-  border-top: 1px solid var(--hud-line);
-}
-
-.modalColumns ul {
-  margin: 15px 0 0;
-  padding-left: 18px;
-  color: var(--hud-text-secondary);
-  font-size: 14px;
-  line-height: 1.7;
-}
-
-/* ── Rodapé / Footer ── */
-.footer {
-  flex-shrink: 0; /* Garante que o rodapé nunca seja esmagado ou oculto */
-  border-top: 1px solid var(--hud-line);
-  height: 38px;
-  padding: 0 28px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-  color: var(--hud-text-secondary);
-  font: 9px ui-monospace, SFMono-Regular, Menlo, monospace;
-  letter-spacing: 0.08em;
-  background: color-mix(in srgb, var(--hud-bg) 92%, transparent);
-}
 
 /* ==========================================================================
-   MEDIA QUERIES (RESPONSIVIDADE)
+   MEDIA QUERIES PARA CELULARES E TABLETS (< 1024px)
    ========================================================================== */
-
-/* ── Dispositivos Médios (Tablets & Telas Menores) ── */
-@media (max-width: 900px) {
+@media (max-width: 1024px) {
   .layout {
     grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .context {
+    display: none;
   }
 
   .nav {
-    order: 0;
-    padding: 10px 14px;
-    border-right: 0;
-    border-bottom: 1px solid var(--hud-line);
     display: flex;
-    gap: 3px;
-    overflow: auto;
+    overflow-x: auto;
+    border-right: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--hud-line) 70%, transparent);
+    padding: 10px 16px;
+    gap: 8px;
+    flex-shrink: 0;
+    -webkit-overflow-scrolling: touch;
   }
 
   .nav > p {
@@ -849,151 +643,139 @@
   }
 
   .nav button {
-    white-space: nowrap;
     width: auto;
-    padding: 10px;
-    border-left: 0;
+    white-space: nowrap;
+    border-left: none;
     border-bottom: 2px solid transparent;
-  }
-
-  .nav button small,
-  .nav button b {
-    display: none;
+    padding: 8px 14px;
+    background: color-mix(in srgb, var(--hud-panel) 50%, transparent);
+    font-size: 13px;
   }
 
   .nav .active {
-    border-left: 0;
+    border-left-color: transparent;
     border-bottom-color: var(--hud-yellow);
   }
 
   .content {
-    padding: 44px 28px;
-    min-height: 620px;
-  }
-
-  .context {
-    border-left: 0;
-    border-top: 1px solid var(--hud-line);
-    min-height: 190px;
-  }
-
-  .contextBody {
-    padding: 22px 28px;
-  }
-
-  .contextFoot {
-    display: none;
+    overflow-y: auto;
+    padding: 20px 16px;
+    width: 100%;
   }
 
   .footer {
-    font-size: 8px;
-  }
-
-  .footer span:last-child {
     display: none;
   }
 }
 
-/* ── Dispositivos Pequenos (Smartphones) ── */
-@media (max-width: 560px) {
-  .grid {
-    background-size: 38px 38px;
+/* ==========================================================================
+   AJUSTES RESPONSIVOS MOBILE (< 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* Projetos */
+  .projectRow {
+    grid-template-columns: 1fr auto !important;
+    gap: 8px !important;
   }
 
+  .project button {
+    grid-template-columns: 28px 1fr 16px !important;
+    gap: 8px !important;
+    padding: 14px 0 !important;
+  }
+
+  .project h2 {
+    font-size: 18px !important;
+  }
+
+  .repositoryLink {
+    padding: 6px 8px !important;
+    font-size: 8px !important;
+  }
+
+  /* Currículo (Resume) */
+  .resumeHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  .resumeDownload {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .resumeFrame {
+    height: 420px;
+    margin-bottom: 30px;
+  }
+
+  /* Timeline */
+  .timeline article {
+    grid-template-columns: 32px 1fr;
+    gap: 12px;
+  }
+
+  .timeline h2 {
+    font-size: 18px;
+  }
+
+  /* Habilidades (Skills) mantidas em grade responsiva ou 1 coluna se necessário */
+  .skillGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Modal de Detalhes */
+  .modal {
+    width: 95% !important;
+    max-height: 85vh;
+    padding: 20px;
+    overflow-y: auto;
+  }
+
+  .modalColumns {
+    grid-template-columns: 1fr !important;
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
   .header {
-    height: 59px;
-    padding: 0 16px;
-    gap: 14px;
+    padding: 0 12px;
+    gap: 10px;
+  }
+
+  .brand {
+    font-size: 18px;
   }
 
   .system {
     font-size: 9px;
   }
 
-  .system span {
-    display: none;
-  }
-
-  .layout {
-    min-height: calc(100vh - 93px);
-  }
-
-  .content {
-    padding: 36px 20px;
-    min-height: 560px;
-  }
-
   .content h1 {
-    font-size: 54px;
+    font-size: 32px;
   }
 
-  .lead {
-    font-size: 18px;
+  .lead, .about {
+    font-size: 16px;
   }
 
-  .actions,
-  .readout {
+  .actions {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
+    width: 100%;
   }
 
-  .readout {
-    margin-top: 48px;
+  .primary, .secondary {
+    width: 100%;
+    justify-content: center;
   }
 
-  .project button {
-    grid-template-columns: 28px 1fr 16px;
-  }
-
-  .projectRow {
-    align-items: stretch;
-    grid-template-columns: minmax(0, 1fr) auto;
-  }
-
-  .repositoryLink {
-    align-self: center;
-  }
-
-  .project h2 {
-    font-size: 19px;
-  }
-
+  /* Habilidades em telas muito pequenas (abaixo de 480px) ajustadas para 1 coluna para não espremer */
   .skillGrid {
     grid-template-columns: 1fr;
   }
-
-  .about {
-    font-size: 20px;
-  }
-
-  .footer {
-    padding: 0 15px;
-  }
-
-  .footer span:nth-child(2) {
-    display: none;
-  }
-
-  .overlay {
-    padding: 12px;
-  }
-
-  .modal {
-    max-height: calc(100vh - 24px);
-    padding: 22px 18px;
-  }
-
-  .modal h2 {
-    font-size: 35px;
-  }
-
-  .modalColumns {
-    grid-template-columns: 1fr;
-    gap: 22px;
-  }
-
-  .resumeHeader { align-items: flex-start; flex-direction: column; }
-
-  .resumePdf { height: 68vh; min-height: 420px; }
 }
